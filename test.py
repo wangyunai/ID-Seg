@@ -30,6 +30,10 @@ sagittal_predictions_path = ''
 accuracy_csv_path = ''
 dice_score_csv_path = ''
 
+weight_axial = 0.4
+weight_coronal = 0.4
+weight_sagittal = 0.2
+
 label_lst = []
 for one_label_dir in label_dir:
     temp_list = []
@@ -95,7 +99,7 @@ for epoch in range(1, 16):
         coronal = np.swapaxes(coronal, 0, 3)
         sagittal = softmax(subj_preds_sagittal[i][1:-1, :, :], axis=1)
         sagittal = np.swapaxes(np.swapaxes(sagittal, 0, 2), 0, 3)
-        final_pred = np.argmax(0.4 * axial + 0.4 * coronal + 0.2 * sagittal, axis=1).flatten()
+        final_pred = np.argmax(weight_axial * axial + weight_coronal * coronal + weight_sagittal * sagittal, axis=1).flatten()
 
         tmp_dice_score = f1_score(true_label, final_pred, average=None)
         print("Dice score: {}".format(tmp_dice_score))
