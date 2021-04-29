@@ -9,6 +9,7 @@ After that, we used [train](train.py) script for transfering our knowledge on a 
 ## How to use
 The codes are ready to use. You just need to install needed requirements and provide the paths to dataset as instructed by comments in the code.
 Requirements are nibabel, scikit-image, scikit-learn and pytorch.
+pip install https://github.com/ai-med/nn-common-modules/releases/download/v1.1/nn_common_modules-1.3-py3-none-any.whl
 
 ## Refrences
 [quickNAT_pytorch](https://github.com/ai-med/quickNAT_pytorch#code-authors)
